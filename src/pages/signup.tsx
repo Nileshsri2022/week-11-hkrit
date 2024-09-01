@@ -7,10 +7,12 @@ export default function SignupPage(){
   return <div>
 
       <Signup onClick={async(username,password)=>{
-        const res=await axios.post('http://localhost:3000/signup',{
+        // in nextjs frontend and backend on the same base url that is http://localhost:3000 so you dont need cors and base url dont need to write
+        const res=await axios.post('api/signup',{
           username:username,
           password:password
         })
+        localStorage.setItem("token",res.data.token)
       }}/>
   </div>
 }
